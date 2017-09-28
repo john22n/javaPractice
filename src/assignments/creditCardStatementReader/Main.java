@@ -1,10 +1,10 @@
 package assignments.creditCardStatementReader;
 
 import java.io.*;
+import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 /**
  * Created by JohnNoriega22 on 9/26/17.
@@ -12,10 +12,16 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
 
+
+
         String fileName = "/Users/JohnNoriega22/Documents/myProjects/playground/creditCardFile.csv";
         String dataRow;
         List<String[]> list = new ArrayList<String[]>();
-        double balance;
+        double balance = 0;
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+
+
+
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(fileName));
@@ -33,30 +39,31 @@ public class Main {
             e.printStackTrace();
         }
 
-//        for (String[] stuff: list) {
-//            balance = 0;
-//
-//
-////            System.out.println(stuff[1] + " " +  Double.parseDouble(stuff[3].substring(0, 6)) );
-//            System.out.println(stuff);
-//
-//
-//            if (stuff[1].equals("CREDIT")) {
-//                balance += Double.parseDouble(stuff[3].substring(0,5));
-//            }
-//             else if (stuff[1].equals("DEBIT")) {
-//                balance -= Double.parseDouble(stuff[3]);
-//            }
-//           System.out.println(balance);
-//        }
+        for (String[] stuff: list) {
 
-        for (String[] listed : list) {
 
-            for (String field : listed) {
-                System.out.print(field + "\n");
-
+            if (stuff[1].equalsIgnoreCase("CREDIT")) {
+                balance += Double.parseDouble(stuff[3].substring(0,5));
+            }
+             else if (stuff[1].equalsIgnoreCase("DEBIT")) {
+                balance -= Double.parseDouble(stuff[3]);
             }
 
+
+        }
+
+        if (balance > 0 ) {
+            double tax = balance * .10;
+            balance += tax;
+            String moneyString = formatter.format(balance);
+
+            System.out.println("you have been charged a 10% fee: " + moneyString);
+
+        } else if (balance == 0) {
+            System.out.println("thank you for your payment");
+        } else {
+            String moneyString = formatter.format(balance);
+            System.out.println("thank you for your payment: " + moneyString);
         }
     }
 }
