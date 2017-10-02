@@ -5,6 +5,6 @@ package oop;
  */
 public interface iRate {
     //write class outline
-    public void setRate();
-    public void increaseRate();
+     void setRate();
+     void increaseRate();
 }

@@ -16,7 +16,13 @@ public class Main {
         System.out.println("Bs position found at: " + index);
 
         //CALLED BUBBLE sort
-        Sort.bubbleSort(nums);
+        //Sort.bubbleSort(nums);
+
+        SeperateChainingHash<Integer, String > hash = new SeperateChainingHash<>();
+
+        hash.put(12, "first");
+
+        System.out.println(hash);
 
     }
 }

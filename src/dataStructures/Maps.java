@@ -19,7 +19,7 @@ public class Maps {
 
 
     }
-    public static void mapUtil(Map<Integer, String> map) {
+    private static void mapUtil(Map<Integer, String> map) {
         map.put(101, "steve");
         map.put(502, "roger");
         map.put(22, "Jennifer");
