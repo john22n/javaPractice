@@ -17,6 +17,8 @@ public class FibonnaciApp {
         System.out.println(fib(1));
         System.out.println(fib(2));
         System.out.println(fib(12));
+//        double ten = 10;
+//        System.out.println(ten);
 
     }
 
@@ -30,3 +32,5 @@ public class FibonnaciApp {
         return  fib(n -1) + fib(n - 2);
     };
 }
+
+
